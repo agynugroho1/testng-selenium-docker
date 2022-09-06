@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="search-keyword-module">
+    <test name="search-keyword-java">
+        <parameter name="keyword" value="Java" />
+        <classes>
+            <class name="duckduckgo.search.test.DuckGoSearchTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,27 +1,23 @@
 package booking.flights.test;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
+import tests.BaseTest;
 
-public class BookingFlightTest {
+public class BookingFlightTest extends BaseTest {
 
-    private WebDriver driver;
     private String noOfPassangers;
     private String expectedPrice;
 
     @BeforeTest
     @Parameters({"noOfPassangers", "expectedPrice"})
-    public void setupDriver(String noOfPassangers, String expectedPrice){
+    public void setupParameters(String noOfPassangers, String expectedPrice){
         this.noOfPassangers = noOfPassangers;
         this.expectedPrice = expectedPrice;
-        System.setProperty("webdriver.chrome.driver", "/home/agy/IdeaProjects/selenium-docker/chromedriver");
-        this.driver = new ChromeDriver();
     }
 
     @Test
@@ -58,10 +54,5 @@ public class BookingFlightTest {
         FlightConfirmationPage flightConfirmationPage = new FlightConfirmationPage(driver);
         String actualPrice = flightConfirmationPage.getPrices();
         Assert.assertEquals(actualPrice, expectedPrice);
-    }
-
-    @AfterTest
-    public void quitBrowser(){
-        this.driver.quit();
     }
 }

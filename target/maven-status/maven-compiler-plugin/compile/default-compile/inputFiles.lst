@@ -1,4 +1,5 @@
 /home/agy/IdeaProjects/selenium-docker/src/main/java/pages/FlightConfirmationPage.java
+/home/agy/IdeaProjects/selenium-docker/src/main/java/search/duckgo/searchPage.java
 /home/agy/IdeaProjects/selenium-docker/src/main/java/pages/RegistrationPage.java
 /home/agy/IdeaProjects/selenium-docker/src/main/java/pages/FlightDetailsPage.java
 /home/agy/IdeaProjects/selenium-docker/src/main/java/pages/RegistrationConfirmationPage.java

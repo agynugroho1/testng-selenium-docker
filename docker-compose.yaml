@@ -1,0 +1,68 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:4.4.0
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:4.4.0
+    shm_size: '2g'
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  firefox:
+    image: selenium/node-firefox:4.4.0
+    shm_size: '2g'
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  search-module1:
+    image: agynugroho1/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=search-module.xml
+    volumes:
+      - ./search-result1:/usr/share/udemy/test-output
+  search-module2:
+    image: agynugroho1/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=search-module.xml
+    volumes:
+      - ./search-result2:/usr/share/udemy/test-output
+  book-flight-module1:
+    image: agynugroho1/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=book-flight.xml
+    volumes:
+      - ./booking-result1:/usr/share/udemy/test-output
+  book-flight-module2:
+    image: agynugroho1/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=book-flight.xml
+    volumes:
+      - ./booking-result2:/usr/share/udemy/test-output

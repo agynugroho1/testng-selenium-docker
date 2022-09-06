@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="book-flight-model" parallel="tests">
+    <test name="book-flight-2">
+        <parameter name="noOfPassangers" value="2" />
+        <parameter name="expectedPrice" value="$1169 USD" />
+        <classes>
+            <class name="booking.flights.test.BookingFlightTest" />
+        </classes>
+    </test>
+    <test name="book-flight-3">
+        <parameter name="noOfPassangers" value="3" />
+        <parameter name="expectedPrice" value="$1753 USD" />
+        <classes>
+            <class name="booking.flights.test.BookingFlightTest" />
+        </classes>
+    </test>
+</suite>

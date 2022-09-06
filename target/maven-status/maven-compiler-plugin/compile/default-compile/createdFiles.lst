@@ -1,0 +1,6 @@
+search/duckgo/searchPage.class
+pages/RegistrationConfirmationPage.class
+pages/FindFlightPage.class
+pages/FlightConfirmationPage.class
+pages/RegistrationPage.class
+pages/FlightDetailsPage.class
