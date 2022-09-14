@@ -10,16 +10,22 @@ pipeline {
             }
             steps {
                 sh 'mvn clean package -DskipTests'
-		sh 'docker build -t agynugroho1/selenium-docker'
+            }
+        }
+        stage('Build Image') {
+            steps {
+                script {
+                	app = docker.build("agynugroho1/selenium-docker")
+                }
             }
         }
         stage('Push Image') {
             steps {
                 script {
-			        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-			        	app.push("${BUILD_NUMBER}")
-			            app.push("latest")
-			        }
+			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+			      app.push("${BUILD_NUMBER}")
+			      app.push("latest")
+			}
                 }
             }
         }
