@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                 sh 'mvn clean package -DskipTests'
-		app = docker.build("agynugroho1/selenium-docker")
+		sh 'docker build -t agynugroho1/selenium-docker'
             }
         }
         stage('Push Image') {
